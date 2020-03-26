@@ -114,7 +114,7 @@ fig.update_layout(
     ),
 )
 
-
+#Table plotting
 fig.add_trace(
     go.Table(
     domain = dict(
@@ -175,6 +175,7 @@ fig.add_trace(go.Table(
                align='center'))
 )
 
+#Dash rendering
 app = dash.Dash()
 app.layout = html.Div([
     dcc.Graph(figure=fig, id = 'map', style = {'margin-top': 0,'height' : '100vh'}, animate=True),

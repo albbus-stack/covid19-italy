@@ -8,8 +8,6 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 import glob, os
-from dash.exceptions import PreventUpdate
-import plotly.express as px
 
 # CSV reading data from dpc
 df = pd.read_csv("COVID-19/dati-province/dpc-covid19-ita-province-latest.csv", sep=',', usecols=['lat','long','denominazione_provincia','totale_casi'])

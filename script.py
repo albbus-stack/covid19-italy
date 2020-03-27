@@ -21,6 +21,8 @@ df1 = df1[df1.totale_casi != 0]
 df1 = df1[df1.denominazione_provincia != 'In fase di definizione/aggiornamento']
 df1 = df1.sort_values(by ='totale_casi', ascending = False)
 df = df[df.totale_casi != 0]
+df = df[df.lat != 0]
+df = df[df.long != 0]
 
 #CSV merging for timed data
 path = 'cov/dati-provincie/dati-province'
@@ -65,7 +67,7 @@ fig6.update_layout(paper_bgcolor = '#000000',title_text='National tampons',title
 print('Insert province denomination (i.e. Firenze) :')
 inp = input()
 merged_df = merged_df[merged_df.denominazione_provincia == inp]
-fig7 = go.Figure(go.Scatter(x = d_df.data, y =merged_df.totale_casi, mode='lines', line_color = 'orange'))
+fig7 = go.Figure(go.Scatter(x = merged_df.data, y =merged_df.totale_casi, mode='lines', line_color = 'orange'))
 fig7.update_layout(paper_bgcolor = '#000000',title_text='Provincial cases of '+inp, xaxis_rangeslider_visible=True, titlefont = dict( color = 'white'), plot_bgcolor = '#222222',font = dict(color = '#767677'), yaxis = dict(showspikes = True, spikemode= 'toaxis', gridcolor = '#665a73'), xaxis = dict(showspikes = True, spikemode= 'toaxis',zerolinewidth=1, gridcolor = '#665a73'))
 
 #Map plotting
@@ -171,7 +173,7 @@ fig.add_trace(go.Table(
             x = (0.01,0.32),
             y = (0.25,0.95),
     ),
-    header=dict(values=list(['Area','Ospedalized','Survived','Deaths']),
+    header=dict(values=list(['Area','Ospedalized','Survived','Deaths','New']),
                 font = dict(
                     color = 'white',
                     size = 16,
@@ -179,7 +181,7 @@ fig.add_trace(go.Table(
                 line_color='#665a73',
                 fill_color='#222222',
                 align='center'),
-    cells=dict(values=[dfr['denominazione_regione'],dfr['totale_ospedalizzati'], dfr['dimessi_guariti'], dfr['deceduti']],
+    cells=dict(values=[dfr['denominazione_regione'],dfr['totale_ospedalizzati'], dfr['dimessi_guariti'], dfr['deceduti'], dfr['nuovi_attualmente_positivi']],
                font = dict(
                    color = '#767677'
                ),
@@ -205,4 +207,8 @@ app.layout = html.Div([
 ])
 
 app.css.append_css({'external_url': 'https://codepen.io/albbus-stack/pen/zYGyGKL.css'})
-app.run_server(debug=False, use_reloader=False)
+
+if __name__ == '__main__':
+    app.run_server(debug=False)
+
+server = app.server #FLASK

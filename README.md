@@ -9,7 +9,7 @@ The [script.py](script.py) works like this:
 - Requires an input from terminal of a province that you want to plot the graph of (remember to write it with the capital letter).
 - Starts a local server if the province was correct and there you go!
 
-Also included the [.idea](.idea) folder for direct project configuration in PyCharm.
+Also included the [.idea](.idea) folder for direct project configuration in PyCharm, before using make sure that you have installed all the necessary packages in your compiler for ```script.py```  :  ```import pandas, plotly, dash```
 
 #### Attached images
 

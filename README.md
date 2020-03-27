@@ -6,7 +6,7 @@ Built in Python 3.8, using [pandas](https://github.com/pandas-dev/pandas) for da
 Data is pulled from [DPC](https://github.com/pcm-dpc/COVID-19), which is doing a great job at data storing!
 
 The [script.py](script.py) works like this:
-- Requires an input from terminal of a province that you want to plot the graph of (remember to write it with the capital letter).
+- Requires an input from terminal of a province that you want to plot the graph of (remember to write it with the capital letter, the province graph is the last one).
 - Starts a local server if the province was correct and there you go!
 
 Also included the [.idea](.idea) folder for direct project configuration in PyCharm, before using make sure that you have installed all the necessary packages in your compiler for ```script.py```  :  ```import pandas, plotly, dash```

@@ -45,28 +45,28 @@ d_df = d_df.sort_values(by ='data')
 
 #Chart plotting
 fig1 = go.Figure(go.Scatter(x = d_df.data, y = d_df.totale_casi, mode='lines', line_color = 'deepskyblue'))
-fig1.update_layout(paper_bgcolor = '#000000',title_text='National positive cases',  xaxis_rangeslider_visible=True,plot_bgcolor = '#222222',titlefont = dict( color = 'white'), font = dict(color = '#767677'), yaxis = dict( gridcolor = '#665a73'), xaxis = dict( zerolinewidth=1,gridcolor = '#665a73'))
+fig1.update_layout(paper_bgcolor = '#000000',title_text='National positive cases',  xaxis_rangeslider_visible=True,plot_bgcolor = '#222222',titlefont = dict( color = 'white'), font = dict(color = '#767677'), yaxis = dict( showspikes = True, spikemode= 'toaxis', gridcolor = '#665a73'), xaxis = dict(showspikes = True, spikemode= 'toaxis',  zerolinewidth=1,gridcolor = '#665a73'))
 
 fig2 = go.Figure(go.Scatter(x = d_df.data, y =d_df.totale_ospedalizzati, mode='lines', line_color = 'lightgreen'))
-fig2.update_layout(paper_bgcolor = '#000000',title_text='National ospedalized',titlefont = dict( color = 'white'),plot_bgcolor = '#222222', xaxis_rangeslider_visible=True, font = dict(color = '#767677'), yaxis = dict( gridcolor = '#665a73'), xaxis = dict(zerolinewidth=1, gridcolor = '#665a73'))
+fig2.update_layout(paper_bgcolor = '#000000',title_text='National ospedalized',titlefont = dict( color = 'white'),plot_bgcolor = '#222222', xaxis_rangeslider_visible=True, font = dict(color = '#767677'), yaxis = dict( showspikes = True, spikemode= 'toaxis', gridcolor = '#665a73'), xaxis = dict(showspikes = True, spikemode= 'toaxis', zerolinewidth=1, gridcolor = '#665a73'))
 
 fig3 = go.Figure(go.Scatter(x = d_df.data, y =d_df.deceduti, mode='lines', line_color = 'red'))
-fig3.update_layout(paper_bgcolor = '#000000',title_text='National deaths',titlefont = dict( color = 'white'),plot_bgcolor = '#222222', xaxis_rangeslider_visible=True, font = dict(color = '#767677'), yaxis = dict( gridcolor = '#665a73'), xaxis = dict( zerolinewidth=1,gridcolor = '#665a73'))
+fig3.update_layout(paper_bgcolor = '#000000',title_text='National deaths',titlefont = dict( color = 'white'),plot_bgcolor = '#222222', xaxis_rangeslider_visible=True, font = dict(color = '#767677'), yaxis = dict(showspikes = True, spikemode= 'toaxis',  gridcolor = '#665a73'), xaxis = dict(showspikes = True, spikemode= 'toaxis',  zerolinewidth=1,gridcolor = '#665a73'))
 
 fig4 = go.Figure(go.Scatter(x = d_df.data, y = d_df.nuovi_attualmente_positivi, mode='lines', line_color = 'deepskyblue'))
-fig4.update_layout(paper_bgcolor = '#000000',title_text='New positive cases',titlefont = dict( color = 'white'),plot_bgcolor = '#222222', xaxis_rangeslider_visible=True,font = dict(color = '#767677'), yaxis = dict( gridcolor = '#665a73'), xaxis = dict( zerolinewidth=1,gridcolor = '#665a73'))
+fig4.update_layout(paper_bgcolor = '#000000',title_text='New positive cases',titlefont = dict( color = 'white'),plot_bgcolor = '#222222', xaxis_rangeslider_visible=True,font = dict(color = '#767677'), yaxis = dict(showspikes = True, spikemode= 'toaxis',  gridcolor = '#665a73'), xaxis = dict( showspikes = True, spikemode= 'toaxis', zerolinewidth=1,gridcolor = '#665a73'))
 
 fig5 = go.Figure(go.Scatter(x = d_df.data, y =d_df.dimessi_guariti, mode='lines', line_color = 'lightgreen'))
-fig5.update_layout(paper_bgcolor = '#000000',title_text='National survived',titlefont = dict( color = 'white'),plot_bgcolor = '#222222', xaxis_rangeslider_visible=True,font = dict(color = '#767677'), yaxis = dict( gridcolor = '#665a73'), xaxis = dict(zerolinewidth=1, gridcolor = '#665a73'))
+fig5.update_layout(paper_bgcolor = '#000000',title_text='National survived',titlefont = dict( color = 'white'),plot_bgcolor = '#222222', xaxis_rangeslider_visible=True,font = dict(color = '#767677'), yaxis = dict(showspikes = True, spikemode= 'toaxis',  gridcolor = '#665a73'), xaxis = dict(showspikes = True, spikemode= 'toaxis', zerolinewidth=1, gridcolor = '#665a73'))
 
 fig6 = go.Figure(go.Scatter(x = d_df.data, y =d_df.tamponi, mode='lines', line_color = 'red'))
-fig6.update_layout(paper_bgcolor = '#000000',title_text='National tampons',titlefont = dict( color = 'white'), plot_bgcolor = '#222222', xaxis_rangeslider_visible=True,font = dict(color = '#767677'), yaxis = dict( gridcolor = '#665a73'), xaxis = dict(zerolinewidth=1, gridcolor = '#665a73'))
+fig6.update_layout(paper_bgcolor = '#000000',title_text='National tampons',titlefont = dict( color = 'white'), plot_bgcolor = '#222222', xaxis_rangeslider_visible=True,font = dict(color = '#767677'), yaxis = dict( showspikes = True, spikemode= 'toaxis', gridcolor = '#665a73'), xaxis = dict(showspikes = True, spikemode= 'toaxis', zerolinewidth=1, gridcolor = '#665a73'))
 
 print('Insert province denomination (i.e. Firenze) :')
 inp = input()
 merged_df = merged_df[merged_df.denominazione_provincia == inp]
 fig7 = go.Figure(go.Scatter(x = d_df.data, y =merged_df.totale_casi, mode='lines', line_color = 'orange'))
-fig7.update_layout(paper_bgcolor = '#000000',title_text='Provincial cases of '+inp, xaxis_rangeslider_visible=True, titlefont = dict( color = 'white'), plot_bgcolor = '#222222',font = dict(color = '#767677'), yaxis = dict( gridcolor = '#665a73'), xaxis = dict(zerolinewidth=1, gridcolor = '#665a73'))
+fig7.update_layout(paper_bgcolor = '#000000',title_text='Provincial cases of '+inp, xaxis_rangeslider_visible=True, titlefont = dict( color = 'white'), plot_bgcolor = '#222222',font = dict(color = '#767677'), yaxis = dict(showspikes = True, spikemode= 'toaxis', gridcolor = '#665a73'), xaxis = dict(showspikes = True, spikemode= 'toaxis',zerolinewidth=1, gridcolor = '#665a73'))
 
 #Map plotting
 fig = go.Figure()
@@ -85,6 +85,7 @@ fig.add_trace(go.Scattergeo(
 fig['data'][0].update(mode='markers', textposition='bottom center',
                       text=df['denominazione_provincia']+' : '+df['totale_casi'].map('{:.0f}'.format).astype(str))
 fig.update_layout(
+    dragmode ='pan',
     paper_bgcolor = '#000000',
     margin ={"r":0,"t":0,"l":0, "b":0 },
     title = go.layout.Title(

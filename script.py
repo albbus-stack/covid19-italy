@@ -93,7 +93,7 @@ fig.update_layout(
             color = '#DEF2F2'
         ),
         x = 0.5,
-        y= 0.98,
+        y= 0.985,
         text = 'Covid-19 cases in Italy, Source:<a href="https://github.com/pcm-dpc/COVID-19/tree/master/dati-province">DPC</a>'),
     geo = go.layout.Geo(
         resolution =50 ,
@@ -189,7 +189,9 @@ fig.add_trace(go.Table(
 )
 
 #Dash rendering
-app = dash.Dash()
+external_css = ['https://codepen.io/albbus-stack/pen/zYGyGKL.css']
+app = dash.Dash(external_stylesheets=external_css)
+app.scripts.config.serve_locally = False
 app.layout = html.Div([
     dcc.Graph(figure=fig, id = 'map', style = {'margin-top': 0,'margin-left': 0, 'height' : '100vh'}, animate=True),
     dcc.Graph(figure = fig1, id='graph1', style = {'height': '60vh'}),
@@ -201,4 +203,5 @@ app.layout = html.Div([
     dcc.Graph(figure = fig7, id='graph7', style = {'height': '60vh'}),
 ])
 
+app.css.append_css({'external_url': 'https://codepen.io/albbus-stack/pen/zYGyGKL.css'})
 app.run_server(debug=False, use_reloader=False)

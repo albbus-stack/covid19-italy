@@ -146,7 +146,7 @@ fig.add_trace(
 fig.add_trace(go.Table(
     domain = dict(
             x = (0.01,0.32),
-            y = (0.01,0.23),
+            y = (0.01,0.14),
     ),
     header=dict(values=list(['Total', 'Survived', 'Deaths']),
                 font = dict(
@@ -171,7 +171,7 @@ fig.add_trace(go.Table(
 fig.add_trace(go.Table(
     domain = dict(
             x = (0.01,0.32),
-            y = (0.25,0.95),
+            y = (0.12,0.95),
     ),
     header=dict(values=list(['Area','Ospedalized','Survived','Deaths','New']),
                 font = dict(

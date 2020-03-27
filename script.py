@@ -10,10 +10,10 @@ import dash_html_components as html
 import glob, os
 
 # CSV reading data from dpc
-df = pd.read_csv("COVID-19/dati-province/dpc-covid19-ita-province-latest.csv", sep=',', usecols=['lat','long','denominazione_provincia','totale_casi'])
-df1 = pd.read_csv("COVID-19/dati-province/dpc-covid19-ita-province-latest.csv", sep=',', usecols=['denominazione_provincia','totale_casi'])
-dfr = pd.read_csv("COVID-19/dati-regioni/dpc-covid19-ita-regioni-latest.csv", sep = ',')
-dfg = pd.read_csv("COVID-19/dati-andamento-nazionale/dpc-covid19-ita-andamento-nazionale-latest.csv", sep = ',')
+df = pd.read_csv("cov/dati-province/dati-province/dpc-covid19-ita-province-latest.csv", sep=',', usecols=['lat','long','denominazione_provincia','totale_casi'])
+df1 = pd.read_csv("cov/dati-province/dati-province/dpc-covid19-ita-province-latest.csv", sep=',', usecols=['denominazione_provincia','totale_casi'])
+dfr = pd.read_csv("cov/dati-regioni/dati-regioni/dpc-covid19-ita-regioni-latest.csv", sep = ',')
+dfg = pd.read_csv("cov/dati-andamento-nazionale/dati-andamento-nazionale/dpc-covid19-ita-andamento-nazionale-latest.csv", sep = ',')
 
 #Dataframe sorting and filtering
 dfr = dfr.sort_values(by ='totale_ospedalizzati', ascending = False)
@@ -23,7 +23,7 @@ df1 = df1.sort_values(by ='totale_casi', ascending = False)
 df = df[df.totale_casi != 0]
 
 #CSV merging for timed data
-path = 'COVID-19/dati-province'
+path = 'cov/dati-province/dati-provincie'
 all_files = glob.glob(os.path.join(path, "*.csv"))
 all_df = []
 for f in all_files:
@@ -33,7 +33,7 @@ for f in all_files:
 merged_df = pd.concat(all_df, ignore_index=True)
 merged_df = merged_df.sort_values(by ='data')
 
-path = 'COVID-19/dati-andamento-nazionale'
+path = 'cov/dati-andamento-nazionale/dati-andamento-nazionale'
 all_files = glob.glob(os.path.join(path, "*.csv"))
 all_df = []
 for f in all_files:

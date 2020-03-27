@@ -10,8 +10,8 @@ import dash_html_components as html
 import glob, os
 
 # CSV reading data from dpc
-df = pd.read_csv("cov/dati-province/dati-province/dpc-covid19-ita-province-latest.csv", sep=',', usecols=['lat','long','denominazione_provincia','totale_casi'])
-df1 = pd.read_csv("cov/dati-province/dati-province/dpc-covid19-ita-province-latest.csv", sep=',', usecols=['denominazione_provincia','totale_casi'])
+df = pd.read_csv("cov/dati-provincie/dati-province/dpc-covid19-ita-province-latest.csv", sep=',', usecols=['lat','long','denominazione_provincia','totale_casi'])
+df1 = pd.read_csv("cov/dati-provincie/dati-province/dpc-covid19-ita-province-latest.csv", sep=',', usecols=['denominazione_provincia','totale_casi'])
 dfr = pd.read_csv("cov/dati-regioni/dati-regioni/dpc-covid19-ita-regioni-latest.csv", sep = ',')
 dfg = pd.read_csv("cov/dati-andamento-nazionale/dati-andamento-nazionale/dpc-covid19-ita-andamento-nazionale-latest.csv", sep = ',')
 
@@ -23,7 +23,7 @@ df1 = df1.sort_values(by ='totale_casi', ascending = False)
 df = df[df.totale_casi != 0]
 
 #CSV merging for timed data
-path = 'cov/dati-province/dati-provincie'
+path = 'cov/dati-provincie/dati-province'
 all_files = glob.glob(os.path.join(path, "*.csv"))
 all_df = []
 for f in all_files:
@@ -45,28 +45,28 @@ d_df = d_df.sort_values(by ='data')
 
 #Chart plotting
 fig1 = go.Figure(go.Scatter(x = d_df.data, y = d_df.totale_casi, mode='lines', line_color = 'deepskyblue'))
-fig1.update_layout(paper_bgcolor = 'rgb(232, 232, 232)',title_text='National positive cases', xaxis_rangeslider_visible=True)
+fig1.update_layout(paper_bgcolor = '#000000',title_text='National positive cases',  xaxis_rangeslider_visible=True,plot_bgcolor = '#222222',titlefont = dict( color = 'white'), font = dict(color = '#767677'), yaxis = dict( gridcolor = '#665a73'), xaxis = dict( zerolinewidth=1,gridcolor = '#665a73'))
 
 fig2 = go.Figure(go.Scatter(x = d_df.data, y =d_df.totale_ospedalizzati, mode='lines', line_color = 'lightgreen'))
-fig2.update_layout(paper_bgcolor = 'rgb(232, 232, 232)',title_text='National ospedalized', xaxis_rangeslider_visible=True)
+fig2.update_layout(paper_bgcolor = '#000000',title_text='National ospedalized',titlefont = dict( color = 'white'),plot_bgcolor = '#222222', xaxis_rangeslider_visible=True, font = dict(color = '#767677'), yaxis = dict( gridcolor = '#665a73'), xaxis = dict(zerolinewidth=1, gridcolor = '#665a73'))
 
 fig3 = go.Figure(go.Scatter(x = d_df.data, y =d_df.deceduti, mode='lines', line_color = 'red'))
-fig3.update_layout(paper_bgcolor = 'rgb(232, 232, 232)',title_text='National deaths', xaxis_rangeslider_visible=True)
+fig3.update_layout(paper_bgcolor = '#000000',title_text='National deaths',titlefont = dict( color = 'white'),plot_bgcolor = '#222222', xaxis_rangeslider_visible=True, font = dict(color = '#767677'), yaxis = dict( gridcolor = '#665a73'), xaxis = dict( zerolinewidth=1,gridcolor = '#665a73'))
 
 fig4 = go.Figure(go.Scatter(x = d_df.data, y = d_df.nuovi_attualmente_positivi, mode='lines', line_color = 'deepskyblue'))
-fig4.update_layout(paper_bgcolor = 'rgb(232, 232, 232)',title_text='New positive cases', xaxis_rangeslider_visible=True)
+fig4.update_layout(paper_bgcolor = '#000000',title_text='New positive cases',titlefont = dict( color = 'white'),plot_bgcolor = '#222222', xaxis_rangeslider_visible=True,font = dict(color = '#767677'), yaxis = dict( gridcolor = '#665a73'), xaxis = dict( zerolinewidth=1,gridcolor = '#665a73'))
 
 fig5 = go.Figure(go.Scatter(x = d_df.data, y =d_df.dimessi_guariti, mode='lines', line_color = 'lightgreen'))
-fig5.update_layout(paper_bgcolor = 'rgb(232, 232, 232)',title_text='National survived', xaxis_rangeslider_visible=True)
+fig5.update_layout(paper_bgcolor = '#000000',title_text='National survived',titlefont = dict( color = 'white'),plot_bgcolor = '#222222', xaxis_rangeslider_visible=True,font = dict(color = '#767677'), yaxis = dict( gridcolor = '#665a73'), xaxis = dict(zerolinewidth=1, gridcolor = '#665a73'))
 
 fig6 = go.Figure(go.Scatter(x = d_df.data, y =d_df.tamponi, mode='lines', line_color = 'red'))
-fig6.update_layout(paper_bgcolor = 'rgb(232, 232, 232)',title_text='National tampons', xaxis_rangeslider_visible=True)
+fig6.update_layout(paper_bgcolor = '#000000',title_text='National tampons',titlefont = dict( color = 'white'), plot_bgcolor = '#222222', xaxis_rangeslider_visible=True,font = dict(color = '#767677'), yaxis = dict( gridcolor = '#665a73'), xaxis = dict(zerolinewidth=1, gridcolor = '#665a73'))
 
 print('Insert province denomination (i.e. Firenze) :')
 inp = input()
 merged_df = merged_df[merged_df.denominazione_provincia == inp]
 fig7 = go.Figure(go.Scatter(x = d_df.data, y =merged_df.totale_casi, mode='lines', line_color = 'orange'))
-fig7.update_layout(paper_bgcolor = 'rgb(232, 232, 232)',title_text='Provincial cases of '+inp, xaxis_rangeslider_visible=True)
+fig7.update_layout(paper_bgcolor = '#000000',title_text='Provincial cases of '+inp, xaxis_rangeslider_visible=True, titlefont = dict( color = 'white'), plot_bgcolor = '#222222',font = dict(color = '#767677'), yaxis = dict( gridcolor = '#665a73'), xaxis = dict(zerolinewidth=1, gridcolor = '#665a73'))
 
 #Map plotting
 fig = go.Figure()
@@ -85,28 +85,29 @@ fig.add_trace(go.Scattergeo(
 fig['data'][0].update(mode='markers', textposition='bottom center',
                       text=df['denominazione_provincia']+' : '+df['totale_casi'].map('{:.0f}'.format).astype(str))
 fig.update_layout(
-    paper_bgcolor = 'rgb(232, 232, 232)',
+    paper_bgcolor = '#000000',
     margin ={"r":0,"t":0,"l":0, "b":0 },
     title = go.layout.Title(
         font = dict(
             size = 20,
+            color = '#DEF2F2'
         ),
         x = 0.5,
         y= 0.98,
         text = 'Covid-19 cases in Italy, Source:<a href="https://github.com/pcm-dpc/COVID-19/tree/master/dati-province">DPC</a>'),
     geo = go.layout.Geo(
         resolution =50 ,
-       scope = 'world',
-      showframe = False,
-       showocean = True,
-        oceancolor = 'rgb(2, 10, 69)',
+        scope = 'world',
+        showframe = False,
+        showocean = True,
+        oceancolor = '#000f1a',
         showrivers = True,
-        rivercolor = 'rgb(3, 13, 84)',
-        lakecolor = 'rgb(3, 13, 84)',
+        rivercolor = '#000f1a',
+        lakecolor = '#000f1a',
         showlakes = True,
         showcoastlines = True,
-        landcolor = "rgb(128, 127, 133)",
-        coastlinecolor = "white",
+        landcolor = "#2a2a28",
+        coastlinecolor = "#665a73",
         projection_type = 'mercator',
         lonaxis_range= [ 5.0, 20.0 ],
         lataxis_range= [ 36.0, 48.0 ],
@@ -126,11 +127,16 @@ fig.add_trace(
                     color = 'white',
                     size = 17,
                 ),
-                fill_color='rgb(3, 13, 84)',
+                line_color='#665a73',
+                fill_color='#222222',
                 align='center'),
     cells=dict(values=[df1['denominazione_provincia'], df1['totale_casi']],
+               font = dict(
+                   color = '#767677'
+               ),
+               line_color='#665a73',
                height=21.1,
-               fill_color='rgb(212, 212, 212)',
+               fill_color='#222222',
                align='center')),
 )
 
@@ -144,13 +150,15 @@ fig.add_trace(go.Table(
                     color = 'white',
                     size = 17,
                 ),
-                fill_color='rgb(3, 13, 84)',
+                line_color='#665a73',
+                fill_color='#222222',
                 align='center'),
     cells=dict(values=[dfg['totale_casi'], dfg['dimessi_guariti'],dfg['deceduti']],
-               fill_color='rgb(212, 212, 212)',
+               line_color='#665a73',
+               fill_color='#222222',
             height = 30,
                font=dict(
-                   color='black',
+                   color='#767677',
                    size=17,
                ),
                align='center'))
@@ -167,10 +175,15 @@ fig.add_trace(go.Table(
                     color = 'white',
                     size = 16,
                 ),
-                fill_color='rgb(3, 13, 84)',
+                line_color='#665a73',
+                fill_color='#222222',
                 align='center'),
     cells=dict(values=[dfr['denominazione_regione'],dfr['totale_ospedalizzati'], dfr['dimessi_guariti'], dfr['deceduti']],
-               fill_color='rgb(212, 212, 212)',
+               font = dict(
+                   color = '#767677'
+               ),
+               line_color='#665a73',
+               fill_color='#222222',
                height = 23.7,
                align='center'))
 )
@@ -178,7 +191,7 @@ fig.add_trace(go.Table(
 #Dash rendering
 app = dash.Dash()
 app.layout = html.Div([
-    dcc.Graph(figure=fig, id = 'map', style = {'margin-top': 0,'height' : '100vh'}, animate=True),
+    dcc.Graph(figure=fig, id = 'map', style = {'margin-top': 0,'margin-left': 0, 'height' : '100vh'}, animate=True),
     dcc.Graph(figure = fig1, id='graph1', style = {'height': '60vh'}),
     dcc.Graph(figure = fig2, id='graph2', style = {'height': '60vh'}),
     dcc.Graph(figure = fig3, id='graph3', style = {'height': '60vh'}),

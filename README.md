@@ -13,8 +13,8 @@ Also included the [.idea](.idea) folder for direct project configuration in PyCh
 
 #### Attached images
 
-![img1](/readme_img/img1.png)
-![img2](/readme_img/img2.png)
-![img3](/readme_img/img3.png)
-![img4](/readme_img/img4.png)
-![img5](/readme_img/img5.png)
+![img1](/img1.png)
+![img2](/img2.png)
+![img3](/img3.png)
+![img4](/img4.png)
+![img5](/img5.png)

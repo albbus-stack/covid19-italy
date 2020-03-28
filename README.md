@@ -18,3 +18,4 @@ Also included the [.idea](.idea) folder for direct project configuration in PyCh
 ![img3](/img3.png)
 ![img4](/img4.png)
 ![img5](/img5.png)
+![img6](/img6.png)

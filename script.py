@@ -45,9 +45,31 @@ for f in all_files:
 d_df = pd.concat(all_df, ignore_index=True)
 d_df = d_df.sort_values(by ='data')
 
+path = 'cov/dati-regioni/dati-regioni'
+all_files = glob.glob(os.path.join(path, "*.csv"))
+all_df = []
+for f in all_files:
+    dF = pd.read_csv(f, sep=',')
+    dF['file'] = f.split('/')[-1]
+    all_df.append(dF)
+merged_df2 = pd.concat(all_df, ignore_index=True)
+merged_df2 = merged_df2.sort_values(by ='data')
+
 #Chart plotting
 fig1 = go.Figure(go.Scatter(x = d_df.data, y = d_df.totale_casi, mode='lines', line_color = 'deepskyblue'))
-fig1.update_layout(paper_bgcolor = '#000000',title_text='National positive cases',  xaxis_rangeslider_visible=True,plot_bgcolor = '#222222',titlefont = dict( color = 'white'), font = dict(color = '#767677'), yaxis = dict( showspikes = True, spikemode= 'toaxis', gridcolor = '#665a73'), xaxis = dict(showspikes = True, spikemode= 'toaxis',  zerolinewidth=1,gridcolor = '#665a73'))
+fig1.update_layout(paper_bgcolor = '#000000',title_text='National positive cases',  xaxis_rangeslider_visible=True,plot_bgcolor = '#222222',titlefont = dict( color = 'white'), font = dict(color = '#767677'), yaxis = dict( autorange = True, fixedrange = False,showspikes = True, spikemode= 'toaxis', gridcolor = '#665a73'), xaxis = dict(showspikes = True, spikemode= 'toaxis',  zerolinewidth=1,gridcolor = '#665a73'))
+
+Num = d_df['nuovi_attualmente_positivi']
+Den = d_df['totale_attualmente_positivi']
+Num = Num.to_numpy()
+Den = Den.to_numpy()
+Res1 = []
+for i, j in zip(range(1,len(Num)),range(len(Den))):
+    if Den[j] != 0:
+        Res1.append(Num[i] / Den[j])
+
+fig9 = go.Figure(go.Scatter(x = d_df.data, y = Res1, mode='lines', line_color = 'deepskyblue'))
+fig9.update_layout(paper_bgcolor = '#000000',title_text='Daily national percentual increase',  xaxis_rangeslider_visible=True,plot_bgcolor = '#222222',titlefont = dict( color = 'white'), font = dict(color = '#767677'), yaxis = dict( autorange = True, fixedrange = False,showspikes = True, spikemode= 'toaxis', gridcolor = '#665a73'), xaxis = dict(showspikes = True, spikemode= 'toaxis',  zerolinewidth=1,gridcolor = '#665a73'))
 
 fig2 = go.Figure(go.Scatter(x = d_df.data, y =d_df.totale_ospedalizzati, mode='lines', line_color = 'lightgreen'))
 fig2.update_layout(paper_bgcolor = '#000000',title_text='National ospedalized',titlefont = dict( color = 'white'),plot_bgcolor = '#222222', xaxis_rangeslider_visible=True, font = dict(color = '#767677'), yaxis = dict( showspikes = True, spikemode= 'toaxis', gridcolor = '#665a73'), xaxis = dict(showspikes = True, spikemode= 'toaxis', zerolinewidth=1, gridcolor = '#665a73'))
@@ -69,6 +91,21 @@ inp = input()
 merged_df = merged_df[merged_df.denominazione_provincia == inp]
 fig7 = go.Figure(go.Scatter(x = merged_df.data, y =merged_df.totale_casi, mode='lines', line_color = 'orange'))
 fig7.update_layout(paper_bgcolor = '#000000',title_text='Provincial cases of '+inp, xaxis_rangeslider_visible=True, titlefont = dict( color = 'white'), plot_bgcolor = '#222222',font = dict(color = '#767677'), yaxis = dict(showspikes = True, spikemode= 'toaxis', gridcolor = '#665a73'), xaxis = dict(showspikes = True, spikemode= 'toaxis',zerolinewidth=1, gridcolor = '#665a73'))
+
+print('Insert a region denomination (i.e. Toscana) :')
+inp = input()
+merged_df2 = merged_df2[merged_df2.denominazione_regione == inp]
+Num = merged_df2['nuovi_attualmente_positivi']
+Den = merged_df2['totale_attualmente_positivi']
+Num = Num.to_numpy()
+Den = Den.to_numpy()
+Res = []
+for i, j in zip(range(1,len(Num)),range(len(Den))):
+    if Den[j] != 0:
+        Res.append(Num[i] / Den[j])
+
+fig8 = go.Figure(go.Scatter(x = merged_df2.data, y = Res, mode='lines', line_color = 'red'))
+fig8.update_layout(paper_bgcolor = '#000000',title_text='Daily percentual increase in '+inp,titlefont = dict( color = 'white'), plot_bgcolor = '#222222', xaxis_rangeslider_visible=True,font = dict(color = '#767677'), yaxis = dict( showspikes = True, spikemode= 'toaxis', gridcolor = '#665a73'), xaxis = dict(showspikes = True, spikemode= 'toaxis', zerolinewidth=1, gridcolor = '#665a73'))
 
 #Map plotting
 fig = go.Figure()
@@ -198,12 +235,14 @@ app.scripts.config.serve_locally = False
 app.layout = html.Div([
     dcc.Graph(figure=fig, id = 'map', style = {'margin-top': 0,'margin-left': 0, 'height' : '100vh'}, animate=True),
     dcc.Graph(figure = fig1, id='graph1', style = {'height': '60vh'}),
+    dcc.Graph(figure = fig9, id='graph9', style = {'height': '60vh'}),
+    dcc.Graph(figure = fig4, id='graph4', style = {'height': '60vh'}),
     dcc.Graph(figure = fig2, id='graph2', style = {'height': '60vh'}),
     dcc.Graph(figure = fig3, id='graph3', style = {'height': '60vh'}),
-    dcc.Graph(figure = fig4, id='graph4', style = {'height': '60vh'}),
     dcc.Graph(figure = fig5, id='graph5', style = {'height': '60vh'}),
     dcc.Graph(figure = fig6, id='graph6', style = {'height': '60vh'}),
     dcc.Graph(figure = fig7, id='graph7', style = {'height': '60vh'}),
+    dcc.Graph(figure = fig8, id='graph8', style = {'height': '60vh'}),
 ])
 
 app.css.append_css({'external_url': 'https://codepen.io/albbus-stack/pen/zYGyGKL.css'})

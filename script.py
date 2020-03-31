@@ -59,8 +59,8 @@ merged_df2 = merged_df2.sort_values(by ='data')
 fig1 = go.Figure(go.Scatter(x = d_df.data, y = d_df.totale_casi, mode='lines', line_color = 'deepskyblue'))
 fig1.update_layout(paper_bgcolor = '#000000',title_text='National positive cases',  xaxis_rangeslider_visible=True,plot_bgcolor = '#222222',titlefont = dict( color = 'white'), font = dict(color = '#767677'), yaxis = dict( autorange = True, fixedrange = False,showspikes = True, spikemode= 'toaxis', gridcolor = '#665a73'), xaxis = dict(showspikes = True, spikemode= 'toaxis',  zerolinewidth=1,gridcolor = '#665a73'))
 
-Num = d_df['nuovi_attualmente_positivi']
-Den = d_df['totale_attualmente_positivi']
+Num = d_df['nuovi_positivi']
+Den = d_df['totale_positivi']
 Num = Num.to_numpy()
 Den = Den.to_numpy()
 Res1 = []
@@ -77,7 +77,7 @@ fig2.update_layout(paper_bgcolor = '#000000',title_text='National ospedalized',t
 fig3 = go.Figure(go.Scatter(x = d_df.data, y =d_df.deceduti, mode='lines', line_color = 'red'))
 fig3.update_layout(paper_bgcolor = '#000000',title_text='National deaths',titlefont = dict( color = 'white'),plot_bgcolor = '#222222', xaxis_rangeslider_visible=True, font = dict(color = '#767677'), yaxis = dict(showspikes = True, spikemode= 'toaxis',  gridcolor = '#665a73'), xaxis = dict(showspikes = True, spikemode= 'toaxis',  zerolinewidth=1,gridcolor = '#665a73'))
 
-fig4 = go.Figure(go.Scatter(x = d_df.data, y = d_df.nuovi_attualmente_positivi, mode='lines', line_color = 'deepskyblue'))
+fig4 = go.Figure(go.Scatter(x = d_df.data, y = d_df.nuovi_positivi, mode='lines', line_color = 'deepskyblue'))
 fig4.update_layout(paper_bgcolor = '#000000',title_text='New positive cases',titlefont = dict( color = 'white'),plot_bgcolor = '#222222', xaxis_rangeslider_visible=True,font = dict(color = '#767677'), yaxis = dict(showspikes = True, spikemode= 'toaxis',  gridcolor = '#665a73'), xaxis = dict( showspikes = True, spikemode= 'toaxis', zerolinewidth=1,gridcolor = '#665a73'))
 
 fig5 = go.Figure(go.Scatter(x = d_df.data, y =d_df.dimessi_guariti, mode='lines', line_color = 'lightgreen'))
@@ -95,8 +95,8 @@ fig7.update_layout(paper_bgcolor = '#000000',title_text='Provincial cases of '+i
 print('Insert a region denomination (i.e. Toscana) :')
 inp = input()
 merged_df2 = merged_df2[merged_df2.denominazione_regione == inp]
-Num = merged_df2['nuovi_attualmente_positivi']
-Den = merged_df2['totale_attualmente_positivi']
+Num = merged_df2['nuovi_positivi']
+Den = merged_df2['totale_positivi']
 Num = Num.to_numpy()
 Den = Den.to_numpy()
 Res = []
@@ -218,7 +218,7 @@ fig.add_trace(go.Table(
                 line_color='#665a73',
                 fill_color='#222222',
                 align='center'),
-    cells=dict(values=[dfr['denominazione_regione'],dfr['totale_ospedalizzati'], dfr['dimessi_guariti'], dfr['deceduti'], dfr['nuovi_attualmente_positivi']],
+    cells=dict(values=[dfr['denominazione_regione'],dfr['totale_ospedalizzati'], dfr['dimessi_guariti'], dfr['deceduti'], dfr['nuovi_positivi']],
                font = dict(
                    color = '#767677'
                ),

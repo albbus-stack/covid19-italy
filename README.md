@@ -7,11 +7,11 @@ Built in Python 3.8, using [pandas](https://github.com/pandas-dev/pandas) for da
 
 Data is pulled from [DPC](https://github.com/pcm-dpc/COVID-19), which is doing a great job at data storing!
 
-The [script.py](script.py) works like this:
+If you want to run it locally with the ability of changing the areas, the [main.py](main.py) works like this:
 - You have to edit lines 92 and 100 in main.py, first inserting the name of a province then one of a region to plot the last two graphs (the defaults are "Firenze" and "Toscana").
 - Starts a local server and there you go!
 
-Also included the [.idea](.idea) folder for direct project configuration in PyCharm, before using make sure that you have installed all the necessary packages in your compiler for ```script.py```  :  ```import pandas, plotly, dash```
+Also included the [.idea](.idea) folder for direct project configuration in PyCharm, before using make sure that you have installed all the necessary packages in your compiler for ```main.py```  :  ```import pandas, plotly, dash```
 
 #### Attached images
 

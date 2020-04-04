@@ -87,14 +87,18 @@ fig5.update_layout(paper_bgcolor = '#000000',title_text='National survived',titl
 fig6 = go.Figure(go.Scatter(x = d_df.data, y =d_df.tamponi, mode='lines', line_color = 'red'))
 fig6.update_layout(paper_bgcolor = '#000000',title_text='National tampons',titlefont = dict( color = 'white'), plot_bgcolor = '#222222', xaxis_rangeslider_visible=True,font = dict(color = '#767677'), yaxis = dict( showspikes = True, spikemode= 'toaxis', gridcolor = '#665a73'), xaxis = dict(showspikes = True, spikemode= 'toaxis', zerolinewidth=1, gridcolor = '#665a73'))
 
-#print('Insert province denomination (i.e. Firenze) :')
+#I've not jet implemented a dropdown input on the webapp, just hard code it in
+#Insert province denomination (i.e. Firenze) :
 inp = "Firenze"
+#If you want another province just change it leaving the " "
 merged_df = merged_df[merged_df.denominazione_provincia == inp]
 fig7 = go.Figure(go.Scatter(x = merged_df.data, y =merged_df.totale_casi, mode='lines', line_color = 'orange'))
 fig7.update_layout(paper_bgcolor = '#000000',title_text='Provincial cases of '+str(inp), xaxis_rangeslider_visible=True, titlefont = dict( color = 'white'), plot_bgcolor = '#222222',font = dict(color = '#767677'), yaxis = dict(showspikes = True, spikemode= 'toaxis', gridcolor = '#665a73'), xaxis = dict(showspikes = True, spikemode= 'toaxis',zerolinewidth=1, gridcolor = '#665a73'))
 
-#print('Insert a region denomination (i.e. Toscana) :')
+#I've not jet implemented a dropdown input on the webapp, just hard code it in
+#Insert a region denomination (i.e. Toscana) :
 inp = "Toscana"
+#If you want another province just change it leaving the " "
 merged_df2 = merged_df2[merged_df2.denominazione_regione == inp]
 Num = merged_df2['nuovi_positivi']
 Den = merged_df2['totale_positivi']

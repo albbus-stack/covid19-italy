@@ -304,4 +304,4 @@ server.layout = html.Div([
 server.css.append_css({'external_url': 'https://codepen.io/albbus-stack/pen/zYGyGKL'})
 
 if __name__ == "__main__":
-    app.run(host='127.0.0.1', port=8080, debug=True)
+    app.run(port=8080, debug=True)

@@ -81,8 +81,7 @@ fig9 = go.Figure(go.Scatter(x=d_df.data, y=Res1, mode='lines', line_color='deeps
 fig9.update_layout(paper_bgcolor='#000000', title_text='Daily national percentual increase',
                    xaxis_rangeslider_visible=True, plot_bgcolor='#222222', titlefont=dict(color='white'),
                    font=dict(color='#767677'),
-                   yaxis=dict(autorange=True, fixedrange=False, showspikes=True, spikemode='toaxis',
-                              gridcolor='#665a73'),
+                   yaxis=dict(range= [0.0, 1.0], showspikes=True, spikemode='toaxis',gridcolor='#665a73'),
                    xaxis=dict(showspikes=True, spikemode='toaxis', zerolinewidth=1, gridcolor='#665a73'))
 
 fig2 = go.Figure(go.Scatter(x=d_df.data, y=d_df.totale_ospedalizzati, mode='lines', line_color='lightgreen'))
@@ -115,7 +114,7 @@ fig6.update_layout(paper_bgcolor='#000000', title_text='National tampons', title
                    yaxis=dict(showspikes=True, spikemode='toaxis', gridcolor='#665a73'),
                    xaxis=dict(showspikes=True, spikemode='toaxis', zerolinewidth=1, gridcolor='#665a73'))
 
-# I've not jet implemented a dropdown input on the webapp, just hard code it in
+# I've not yet implemented a dropdown input on the webapp, just hard code it in
 # Insert province denomination (i.e. Firenze) :
 inp = "Firenze"
 # If you want another province just change it leaving the " "
@@ -126,10 +125,10 @@ fig7.update_layout(paper_bgcolor='#000000', title_text='Provincial cases of ' + 
                    font=dict(color='#767677'), yaxis=dict(showspikes=True, spikemode='toaxis', gridcolor='#665a73'),
                    xaxis=dict(showspikes=True, spikemode='toaxis', zerolinewidth=1, gridcolor='#665a73'))
 
-# I've not jet implemented a dropdown input on the webapp, just hard code it in
+# I've not yet implemented a dropdown input on the webapp, just hard code it in
 # Insert a region denomination (i.e. Toscana) :
 inp = "Toscana"
-# If you want another province just change it leaving the " "
+# If you want another region just change it leaving the " "
 merged_df2 = merged_df2[merged_df2.denominazione_regione == inp]
 Num = merged_df2['nuovi_positivi']
 Den = merged_df2['totale_positivi']
@@ -143,7 +142,7 @@ for i, j in zip(range(1, len(Num)), range(len(Den))):
 fig8 = go.Figure(go.Scatter(x=merged_df2.data, y=Res, mode='lines', line_color='red'))
 fig8.update_layout(paper_bgcolor='#000000', title_text='Daily percentual increase in ' + str(inp),
                    titlefont=dict(color='white'), plot_bgcolor='#222222', xaxis_rangeslider_visible=True,
-                   font=dict(color='#767677'), yaxis=dict(showspikes=True, spikemode='toaxis', gridcolor='#665a73'),
+                   font=dict(color='#767677'), yaxis=dict(range= [0.0, 1.0], showspikes=True, spikemode='toaxis', gridcolor='#665a73'),
                    xaxis=dict(showspikes=True, spikemode='toaxis', zerolinewidth=1, gridcolor='#665a73'))
 
 # Map plotting
@@ -285,8 +284,8 @@ tab1.update_layout(
 # Dash rendering
 external_css = ['./style.css']
 app = flask.Flask(__name__)
-app.title = 'Covid-Italy'
 server = dash.Dash(__name__, server=app, external_stylesheets=external_css)
+server.title = 'Covid-Italy'
 server.scripts.config.serve_locally = False
 server.layout = html.Div([
     dcc.Graph(figure=fig, id='map', style={'margin-top': 0, 'margin-left': 0, 'height': '100vh'}, animate=True),
@@ -306,4 +305,4 @@ server.layout = html.Div([
 server.css.append_css({'external_url': './style.css'})
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=environ.get("PORT", 8080), debug=True)
+    app.run(host='127.0.0.1', port=environ.get("PORT", 8080), debug=True)

@@ -305,4 +305,4 @@ server.layout = html.Div([
 server.css.append_css({'external_url': './style.css'})
 
 if __name__ == "__main__":
-    app.run(host='127.0.0.1', port=environ.get("PORT", 8080), debug=True)
+    app.run(host='0.0.0.0', port=environ.get("PORT", 8080), debug=True)

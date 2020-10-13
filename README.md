@@ -1,4 +1,6 @@
 # covid19-italy
+![GPLv3 License](https://img.shields.io/badge/%20License-GPL%20v3-yellow?style=flat-square)
+![Plotly](https://img.shields.io/badge/%20-Plotly-blue?style=flat-square)
 
 Map and charts data visualization of __Covid19__ cases in __Italy__, kindly hosted by [Heroku](https://heroku.com) on https://cov-19-it.herokuapp.com/.
 

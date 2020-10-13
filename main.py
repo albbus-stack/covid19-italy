@@ -283,7 +283,7 @@ tab1.update_layout(
 )
 
 # Dash rendering
-external_css = ['https://codepen.io/albbus-stack/pen/zYGyGKL.css']
+external_css = ['./style.css']
 app = flask.Flask(__name__)
 server = dash.Dash(__name__, server=app, external_stylesheets=external_css)
 server.scripts.config.serve_locally = False
@@ -302,7 +302,7 @@ server.layout = html.Div([
     dcc.Graph(figure=fig7, id='graph7', style={'height': '60vh'}),
     dcc.Graph(figure=fig8, id='graph8', style={'height': '60vh'}),
 ])
-server.css.append_css({'external_url': 'https://codepen.io/albbus-stack/pen/zYGyGKL'})
+server.css.append_css({'external_url': './style.css'})
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=environ.get("PORT", 8080), debug=True)

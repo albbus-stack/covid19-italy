@@ -9,6 +9,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 import glob, os
 import flask
+from os import environ
 
 # CSV reading data from dpc
 df = pd.read_csv("cov/dati-province/dati-province/dpc-covid19-ita-province-latest.csv", sep=',',

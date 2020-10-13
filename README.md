@@ -5,13 +5,13 @@ Built in Python 3.8, using [pandas](https://github.com/pandas-dev/pandas) for da
 
 Data is pulled from [DPC](https://github.com/pcm-dpc/COVID-19), which is doing a great job at data storing!
 
-The [script.py](script.py) works like this:
-- Requires two inputs from terminal: first a province than a region that you want to plot the graph of (remember to write them with the capital letter, the graphs are the last ones).
-- Starts a local server if the province was correct and there you go!
+### Compile it yourself
 
-Also included the [.idea](.idea) folder for direct project configuration in PyCharm, before using make sure that you have installed all the necessary packages in your compiler for ```script.py```  :  ```import pandas, plotly, dash```
+1. Install all the [requirements](requirements.txt).
 
-#### Attached images
+2. Change the province you want to visualize on line 120 in [main.py](main.py) and run the server locally (on port 8080).
+
+### Attached images
 
 ![img1](/img1.png)
 ![img2](/img2.png)

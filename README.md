@@ -1,5 +1,6 @@
 # covid19-italy
-Map and charts data visualization of __Covid19__ cases in Italy, kindly hosted by Heroku on https://cov-19-it.herokuapp.com/.
+
+Map and charts data visualization of __Covid19__ cases in __Italy__, kindly hosted by [Heroku](https://heroku.com) on https://cov-19-it.herokuapp.com/.
 
 Built in Python 3.8, using [pandas](https://github.com/pandas-dev/pandas) for data manipulation and [plotly](https://github.com/plotly/plotly.py) for interactive visualization, renders in browser using [dash](https://github.com/plotly/dash) to output some HTML and React; CSS is added to dash externally.
 
@@ -9,13 +10,10 @@ Data is pulled from [DPC](https://github.com/pcm-dpc/COVID-19), which is doing a
 
 1. Install all the [requirements](requirements.txt).
 
-2. Change the province you want to visualize on line 120 in [main.py](main.py) and run the server locally (on port 8080).
+2. Change the province you want to visualize in line 119 and 130 inside [main.py](main.py).
 
-### Attached images
+3. Run the file with the last line changed and a server will start locally (on http://127.0.0.1:8080/).
 
-![img1](/img1.png)
-![img2](/img2.png)
-![img3](/img3.png)
-![img4](/img4.png)
-![img5](/img5.png)
-![img6](/img6.png)
+### Screenshot
+
+![screenshot](/screenshot.png)

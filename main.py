@@ -306,3 +306,4 @@ server.css.append_css({'external_url': './style.css'})
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=environ.get("PORT", 8080), debug=True)
+# Replace the above host with 127.0.0.1 if you want to run it locally

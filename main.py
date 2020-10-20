@@ -282,7 +282,7 @@ tab1.update_layout(
 )
 
 # Dash rendering
-external_css = ['./style.css']
+external_css = ['./assets/style.css']
 app = flask.Flask(__name__)
 server = dash.Dash(__name__, server=app, external_stylesheets=external_css)
 server.title = 'Covid-Italy'

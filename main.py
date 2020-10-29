@@ -155,7 +155,7 @@ fig.add_trace(go.Scattergeo(
     text=df['denominazione_provincia'],
     mode='markers',
     marker=dict(
-        size=df['totale_casi'] / 100,
+        size=df['totale_casi'] / 200,
         color=color,
         line_width=0
     )))

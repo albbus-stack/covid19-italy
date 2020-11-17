@@ -1,5 +1,5 @@
 # covid19-italy
-[![GPLv3 License](https://img.shields.io/badge/%20License-GPL%20v3-yellow?style=flat-square)](https://opensource.org/licenses/)
+[![GPLv3 License](https://img.shields.io/badge/%20License-GPL%20v3-yellow?style=flat-square&labelColor=black)](https://opensource.org/licenses/)
 [![Plotly](https://img.shields.io/badge/%20-Plotly-blue?style=flat-square)](https://github.com/plotly)
 [![Committed](https://img.shields.io/github/last-commit/albbus-stack/covid19-italy?label=Committed&color=42c5f5&style=flat-square&logo=heroku&logoColor=42c5f5&logoWidth=17&labelColor=black)](https://github.com/albbus-stack/covid19-italy/commits)
 

@@ -3,7 +3,7 @@
 [![Plotly](https://img.shields.io/badge/%20-Plotly-blue?style=flat-square)](https://github.com/plotly)
 [![Committed](https://img.shields.io/github/last-commit/albbus-stack/covid19-italy?label=Committed&color=42c5f5&style=flat-square&logo=heroku&logoColor=42c5f5&logoWidth=17&labelColor=black)](https://github.com/albbus-stack/covid19-italy/commits)
 
-Map and charts data visualization of __Covid19__ cases in __Italy__, kindly hosted by [Heroku](https://heroku.com) on https://cov-19-it.herokuapp.com/.
+Map and charts data visualization of __Covid19__ cases in __Italy__, kindly hosted by [GCP](https://cloud.google.com/appengine) on https://cov19-it.appspot.com/.
 
 Built in Python 3.8, using [pandas](https://github.com/pandas-dev/pandas) to handle dataframes and [plotly](https://github.com/plotly/plotly.py) for interactive visualization, renders in browser using [dash](https://github.com/plotly/dash).
 
